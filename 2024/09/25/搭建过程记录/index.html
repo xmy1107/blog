@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://xmy1107.github.io/blog/home/xmy/.config/Typora/typora-user-images/image-20240925132827002.png">
 <meta property="og:image" content="http://xmy1107.github.io/blog/home/xmy/.config/Typora/typora-user-images/image-20240925134647445.png">
 <meta property="article:published_time" content="2024-09-25T05:15:08.071Z">
-<meta property="article:modified_time" content="2024-09-25T06:01:43.804Z">
+<meta property="article:modified_time" content="2024-09-25T06:10:00.520Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xmy1107.github.io/blog/home/xmy/.config/Typora/typora-user-images/image-20240925132827002.png">
@@ -103,11 +103,17 @@
 <p>完全按hexo步骤来会在这步卡住，因为git仓库都没有初始化</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ <span class="built_in">echo</span> <span class="string">&quot;# xmy1107.github.io&quot;</span> &gt;&gt; README.md</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git add README.md</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">[main （根提交） 8956e78] first commit</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 README.md</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git remote add origin https://github.com/xmy1107/xmy1107.github.io.git</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git push -u origin main</span><br><span class="line">Username <span class="keyword">for</span> <span class="string">&#x27;https://github.com&#x27;</span>: xmy1107</span><br><span class="line">Password <span class="keyword">for</span> <span class="string">&#x27;https://xmy1107@github.com&#x27;</span>: </span><br></pre></td></tr></table></figure>
 
-<p>这里初始化并进行第一次提交以后就建站成功了，如果是ssh连接就是这样：</p>
+<p>这里初始化并进行第一次提交以后就建站成功了。注意password不是你用户的密码，而是personal access token。如果是ssh连接就是这样（我用PAT能登进去，但每次都要重新输入，但用ssh在把公钥放进去以后不用这样，就用ssh了）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git remote get-url origin</span><br><span class="line">https://github.com/xmy1107/xmy1107.github.io.git</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git remote set-url origin git@github.com:xmy1107/xmy1107.github.io.git</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git remote get-url origin</span><br><span class="line">git@github.com:xmy1107/xmy1107.github.io.git</span><br><span class="line">(base) xmy@xmy-Z790M-AORUS-ELITE-AX:~/blog$ git push -u origin main</span><br><span class="line">枚举对象中: 3, 完成.</span><br><span class="line">对象计数中: 100% (3/3), 完成.</span><br><span class="line">写入对象中: 100% (3/3), 227 字节 | 227.00 KiB/s, 完成.</span><br><span class="line">总共 3（差异 0），复用 0（差异 0），包复用 0</span><br><span class="line">To github.com:xmy1107/xmy1107.github.io.git</span><br><span class="line"> * [new branch]      main -&gt; main</span><br><span class="line">分支 <span class="string">&#x27;main&#x27;</span> 设置为跟踪 <span class="string">&#x27;origin/main&#x27;</span>。</span><br></pre></td></tr></table></figure>
 
 <p>然后在**<a href="https://xmy1107.github.io/**%E4%B8%8B%E5%B0%B1%E6%9C%89%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84%E7%BD%91%E9%A1%B5%EF%BC%9A">https://xmy1107.github.io/**下就有一个空的网页：</a></p>
 <p><img src="/blog/home/xmy/.config/Typora/typora-user-images/image-20240925132827002.png" alt="image-20240925132827002"></p>
+<p>ps：PAT想要不每次输密码可以尝试</p>
+<p><code>vim ~/.gitconfig</code>后输入以下内容（虽然我没成功）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[init]</span><br><span class="line">        defaultBranch = main</span><br><span class="line">[user]</span><br><span class="line">        name = </span><br><span class="line">        email = </span><br><span class="line">[github]</span><br><span class="line">        token = </span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="3-网站正式建立"><a href="#3-网站正式建立" class="headerlink" title="3. 网站正式建立"></a>3. 网站正式建立</h3><p>上面是因为只push了一个README，下面对github工作流配置后再次push可以得到”正常“的一个网页</p>
 <ol>
 <li><p>使用 <code>node --version</code> 指令检查你电脑上的 Node.js 版本。 记下主要版本（我是<code>v20.17.0</code>）</p>
@@ -138,7 +144,7 @@
 <li>安装 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-deployer-git">hexo-deployer-git</a>，即输入<code>npm install hexo-deployer-git --save</code></li>
 <li>在 <code>_config.yml</code> 中添加以下配置（如果配置已经存在，请将其替换为如下）:</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;project&gt;</span><br><span class="line">  # example, https://github.com/hexojs/hexojs.github.io</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;project&gt;</span><br><span class="line">  # example, https://github.com/hexojs/hexojs.github.io</span><br><span class="line">  # 我这里是git@github.com:xmy1107/blog.git，因为我是ssh连接的</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>执行 <code>hexo clean &amp;&amp; hexo deploy</code> 。</li>
@@ -148,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xmy1107.github.io/blog/2024/09/25/%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-id="cm1hglrw40000ykez5i7b25ep" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://xmy1107.github.io/blog/2024/09/25/%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-id="cm1hguer100004wez87l45dwo" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
